@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة الفهد الجديدة للمعدات الطبية</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ===== أساسيات ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Cairo',sans-serif;
+  background:#f5f7fb;
+  color:#1a1a1a;
+}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:auto;padding:0 15px}
+
+/* ===== الهيدر ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(180deg,#0b3c5d,#0f6aa3);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 15px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo img{
+  height:60px;
+  background:#fff;
+  padding:4px;
+  border-radius:8px;
+}
+.company-info h1{font-size:18px}
+.company-info p{font-size:13px;opacity:.9}
+
+/* منيو لابتوب */
+nav.desktop{
+  display:flex;
+  gap:20px;
+}
+nav.desktop a{
+  color:#fff;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:6px;
+}
+nav.desktop a:hover{
+  background:rgba(255,255,255,.15)
+}
+
+/* زر الهاتف */
+.menu-btn{
+  display:none;
+  font-size:28px;
+  color:#fff;
+  background:none;
+  border:none;
+}
+
+/* منيو الهاتف */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:280px;
+  height:100%;
+  background:#0b3c5d;
+  padding:80px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:.3s;
+}
+.mobile-menu.show{right:0}
+.mobile-menu a{
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+}
+
+/* ===== HERO ===== */
+.hero{
+  background:linear-gradient(to left,#0f4c81,#1a73b8);
+  color:#fff;
+  padding:70px 15px 60px; /* تم تقليل الفراغ */
+}
+.hero-inner{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.hero h2{
+  font-size:28px;
+  margin-bottom:10px;
+  animation:fadeUp .8s ease;
+}
+.hero p{
+  font-size:16px;
+  margin-bottom:20px;
+  opacity:.95;
+  animation:fadeUp 1s ease;
+}
+.hero a{
+  display:inline-block;
+  background:#ffd166;
+  color:#1a1a1a;
+  padding:12px 26px;
+  border-radius:8px;
+  font-weight:700;
+  animation:fadeUp 1.2s ease;
+}
+.hero img{
+  width:100%;
+  border-radius:14px;
+  animation:fadeIn 1.2s ease;
+}
+
+/* ===== معلومات سريعة ===== */
+.quick-info{
+  margin-top:-40px;
+}
+.info-card{
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.info-item{
+  text-align:center;
+}
+.info-item strong{color:#0f4c81}
+
+/* ===== الأقسام ===== */
+section{padding:70px 0}
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+.section-title h3{
+  color:#0f4c81;
+  font-size:26px;
+}
+
+/* من نحن */
+.about{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:25px;
+}
+.card{
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.07);
+}
+
+/* نقاط القوة */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.feature{
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* تواصل */
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+input,textarea{
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  margin-bottom:10px;
+}
+button{
+  background:#0f4c81;
+  color:#fff;
+  border:none;
+  padding:10px;
+  border-radius:6px;
+  font-size:15px;
+}
+
+/* فوتر */
+footer{
+  background:#0f1924;
+  color:#d0d3da;
+  text-align:center;
+  padding:18px;
+  font-size:13px;
+}
+
+/* أنيميشن */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ===== الهاتف ===== */
+@media(max-width:900px){
+  nav.desktop,.company-info{display:none}
+  .menu-btn{display:block}
+  .hero-inner,.about,.contact{grid-template-columns:1fr}
+  .hero{text-align:center}
+}
+.whatsapp-btn{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  width:55px;
+  height:55px;
+  background:#25d366;
+  color:#fff;
+  font-size:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  z-index:9999;
+  transition:transform .3s;
+}
+.whatsapp-btn:hover{
+  transform:scale(1.1);
+}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:9998;
+}
+
+/* منيو الهاتف */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-320px;
+  width:300px;
+  height:100%;
+  background:#0b3c5d;
+  padding:80px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:.35s ease;
+  z-index:9999;
+}
+
+/* زر X */
+.close-menu{
+  position:absolute;
+  top:15px;
+  left:15px;
+  font-size:30px;
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* الحالة المفتوحة */
+.mobile-menu.show{
+  right:0;
+}
+.mobile-overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.map-box{
+  margin-top:30px;
+  border-radius:22px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 18px 45px rgba(0,0,0,.18);
+  animation: fadeUp .8s ease forwards;
+}
+
+.map-box iframe{
+  width:100%;
+  height:280px;
+  display:block;
+}
+
+.map-info{
+  padding:18px;
+  text-align:center;
+}
+
+.map-info a{
+  transition:.3s;
+}
+
+.map-info a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(15,76,129,.4);
+}
+
+/* أنيميشن */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:900px){
+ .map-box{
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
+
+.map-info{
+  background:#fff;
+  padding:18px;
+  text-align:center;
+}
+
+.map-info h4{
+  color:#0f4c81;
+  margin-bottom:6px;
+}
+
+.map-info a{
+  display:inline-block;
+  margin-top:10px;
+  background:#0f4c81;
+  color:#fff;
+  padding:8px 18px;
+  border-radius:8px;
+  font-weight:600;
+}
+.map-info a:hover{
+  background:#09375e;
+}
+ /* إخفاء رابط View larger map من Google */
+.map-box a {
+  display: none !important;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner container">
+    <div class="logo">
+      <img src="images/logo.jpeg">
+      <div class="company-info">
+        <h1>شركة الفهد الجديدة</h1>
+        <p>0550000000 – info@alfahd-med.com</p>
+      </div>
+    </div>
+
+    <nav class="desktop">
+      <a href="#">الرئيسية</a>
+      <a href="#about">عن الشركة</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+  </div>
+</header>
+<div class="mobile-overlay" id="overlay" onclick="closeMenu()"></div>
+
+<nav class="mobile-menu" id="menu">
+  <button class="close-menu" onclick="closeMenu()">×</button>
+  <a href="#" onclick="menu.classList.remove('show')">الرئيسية</a>
+  <a href="#about" onclick="menu.classList.remove('show')">عن الشركة</a>
+  <a href="#contact" onclick="menu.classList.remove('show')">تواصل معنا</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h2>شركة الفهد الجديدة للمعدات الطبية</h2>
+      <p>حلول طبية موثوقة للمؤسسات الصحية والمراكز الطبية</p>
+      <a href="#about">عن الشركة</a>
+    </div>
+    <img src="https://images.pexels.com/photos/6129044/pexels-photo-6129044.jpeg">
+  </div>
+</section>
+
+<section class="quick-info container">
+  <div class="info-card">
+    <div class="info-item"><strong>الهاتف</strong><br>0550000000</div>
+    <div class="info-item"><strong>البريد</strong><br>info@alfahd-med.com</div>
+    <div class="info-item"><strong>الموقع</strong><br>المملكة العربية السعودية</div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title"><h3>من نحن</h3></div>
+    <div class="about">
+      <div class="card">
+        شركة متخصصة في توريد وتجهيز المعدات الطبية وفق أعلى معايير الجودة، مع التزام كامل بخدمة العملاء.
+      </div>
+      <div class="card">
+        نعمل مع المستشفيات والعيادات لتقديم حلول موثوقة تدعم الكادر الطبي.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title"><h3>لماذا نحن</h3></div>
+    <div class="features">
+      <div class="feature">جودة معتمدة</div>
+      <div class="feature">خبرة طويلة</div>
+      <div class="feature">التزام مهني</div>
+      <div class="feature">دعم مستمر</div>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>موقعنا على الخريطة</h3>
+      <p>يمكنكم زيارتنا أو التواصل معنا لتحديد موعد</p>
+    </div>
+
+    <div class="map-box">
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3363.3926955904553!2d13.386428375653042!3d32.54236327376268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzLCsDMyJzMyLjUiTiAxM8KwMjMnMjAuNCJF!5e0!3m2!1sen!2str!4v1767268283447!5m2!1sen!2str"
+        width="100%"
+        height="260"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+
+      <div class="map-info">
+        <h4>📍 مقر شركة الفهد الجديدة</h4>
+        <p>الرياض – المملكة العربية السعودية</p>
+        <a href="https://maps.app.goo.gl/qgnXCv7RGoUAEvqN6" target="_blank">
+          فتح الموقع في Google Maps
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title"><h3>تواصل معنا</h3></div>
+    <div class="contact">
+      <div>
+        <p><strong>الهاتف:</strong> 0550000000</p>
+        <p><strong>البريد:</strong> info@alfahd-med.com</p>
+      </div>
+      <form>
+        <input placeholder="الاسم">
+        <input placeholder="الهاتف">
+        <textarea placeholder="رسالتك"></textarea>
+        <button>إرسال</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 شركة الفهد الجديدة للمعدات الطبية
+</footer>
+<a href="https://wa.me/966550000000" class="whatsapp-btn" target="_blank">
+  💬
+</a>
+<script>
+const menu = document.getElementById('menu');
+const overlay = document.getElementById('overlay');
+
+function openMenu(){
+  menu.classList.add('show');
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu(){
+  menu.classList.remove('show');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
